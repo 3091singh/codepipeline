@@ -17,7 +17,7 @@ phases:
   post_build:
     commands:
       - echo "Executing post-build commands"
-      - aws s3 cp ./dist/ s3://your-s3-bucket/
+      - aws s3 cp ./dist/ s3://awsprjbuc/
 
 artifacts:
   files: '**/*'
