@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+
+  pre_build:
+    commands:
+      - echo "Executing pre-build commands"
+
+  build:
+    commands:
+      - echo "Executing build commands"
+      - npm install  # Assuming it's a Node.js project
+
+  post_build:
+    commands:
+      - echo "Executing post-build commands"
+      - aws s3 cp ./dist/ s3://your-s3-bucket/
+
+artifacts:
+  files: '**/*'
+  name: artifact-name
+  discard-paths: yes
+
+cache:
+  paths:
+    - '/root/.npm/**/*'
